@@ -1,8 +1,8 @@
 using AutoMapper;
-using bahrain_api.Models;
-using bahrain_api.DTOs;
+using Bahrain.API.Models;
+using Bahrain.API.DTOs;
 
-namespace bahrain_api.Profiles
+namespace Bahrain.API.Profiles
 {
 
     public class BahrainDataProfiles : Profile

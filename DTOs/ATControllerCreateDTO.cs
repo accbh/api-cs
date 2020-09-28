@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace bahrain_api.DTOs
+namespace Bahrain.API.DTOs
 {
     public class ATControllerCreateDTO
     {

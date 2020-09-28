@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace bahrain_api.Models 
+namespace Bahrain.API.Models 
 {
     [Table("atcontrollers")]
     public class ATController 

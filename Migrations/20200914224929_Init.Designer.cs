@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using bahrain_api.Data;
+using Bahrain.API.Data;
 
-namespace bahrain_api.Migrations
+namespace Bahrain.API.Migrations
 {
     [DbContext(typeof(BahrainDataContext))]
     [Migration("20200914224929_Init")]
@@ -18,7 +18,7 @@ namespace bahrain_api.Migrations
                 .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("bahrain_api.Models.ATController", b =>
+            modelBuilder.Entity("Bahrain.API.Models.ATController", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace bahrain_api.Migrations
                     b.ToTable("atcontrollers");
                 });
 
-            modelBuilder.Entity("bahrain_api.Models.StaffMember", b =>
+            modelBuilder.Entity("Bahrain.API.Models.StaffMember", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

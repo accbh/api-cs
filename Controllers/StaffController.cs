@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using bahrain_api.Data;
-using bahrain_api.DTOs;
+using Bahrain.API.Data;
+using Bahrain.API.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace bahrain_api.Controllers
+namespace Bahrain.API.Controllers
 {
     // TODO: Needs authentication.
     [Route("staff")]

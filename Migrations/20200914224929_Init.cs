@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Metadata;
 
-namespace bahrain_api.Migrations
+namespace Bahrain.API.Migrations
 {
     public partial class Init : Migration
     {

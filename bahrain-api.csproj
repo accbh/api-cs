@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>bahrain_api</RootNamespace>
+    <RootNamespace>Bahrain.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

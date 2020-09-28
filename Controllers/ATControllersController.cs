@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using bahrain_api.Models;
-using bahrain_api.Data;
+using Bahrain.API.Models;
+using Bahrain.API.Data;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
-using bahrain_api.DTOs;
+using Bahrain.API.DTOs;
 using Microsoft.AspNetCore.JsonPatch;
 using System.Linq;
 
-namespace bahrain_api.Controllers
+namespace Bahrain.API.Controllers
 {
     [Route("controllers")]
     [ApiController]

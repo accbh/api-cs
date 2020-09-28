@@ -1,7 +1,7 @@
-using bahrain_api.Models;
+using Bahrain.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace bahrain_api.Data
+namespace Bahrain.API.Data
 {
 
     public class BahrainDataContext : DbContext

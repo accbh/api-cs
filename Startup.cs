@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using bahrain_api.Data;
+using Bahrain.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,8 +14,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Bahrain.Common;
 
-namespace bahrain_api
+namespace Bahrain.API
 {
     public class Startup
     {
@@ -37,6 +38,9 @@ namespace bahrain_api
 
             services.AddScoped<IATControllerRepo, SqlATControllerRepo>();
             services.AddScoped<IStaffRepo, SqlStaffRepo>();
+            services.AddSingleton<IVatsimApi, VatsimApi>(serviceProvider => new VatsimApi(Configuration["VatsimApi:BaseUrl"]));
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IAuthService, AuthService>(serviceProvider => new AuthService(serviceProvider.GetRequiredService<IUserService>(), serviceProvider.GetRequiredService<IVatsimApi>()));
             //services.AddScoped<IATControllerRepo, MockATControllerRepo>();
         }
 
