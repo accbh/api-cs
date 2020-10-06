@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 
 namespace Bahrain.Common {
     public class VatsimApi : IVatsimApi {
@@ -16,7 +17,7 @@ namespace Bahrain.Common {
             throw new NotImplementedException();
         }
 
-        public VatsimUser GetUser(string accessToken, string refreshToken) {
+        public VatsimUser GetUser(string accessToken, string refreshToken, ILogger logger) {
             try {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{_baseUrl}/api/user");
 
@@ -31,6 +32,14 @@ namespace Bahrain.Common {
                 Stream responseStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(responseStream);    
                 return JsonConvert.DeserializeObject<VatsimUser>(reader.ReadToEnd());
+            }
+            catch (WebException ex) {
+                HttpWebResponse webResponse = ex.Response as HttpWebResponse;
+                if (webResponse?.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new AccessTokenRejectedException();
+                }
+                throw ex;
             }
             catch (Exception ex) {
                 // TODO - if the request fails because the accessToken is invalid

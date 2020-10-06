@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace Bahrain.Common
 {
@@ -13,11 +14,11 @@ namespace Bahrain.Common
         private IUserService _userService;
         private IVatsimApi _vatsimApi;
 
-        public void HandleSsoToken(string accessToken, string refreshToken) 
+        public void HandleSsoToken(string accessToken, string refreshToken, ILogger logger) 
         {
             try 
             {
-                VatsimUser vatsimUser = _vatsimApi.GetUser(accessToken, refreshToken);
+                VatsimUser vatsimUser = _vatsimApi.GetUser(accessToken, refreshToken, logger);
                 bool cidHasBeenCaptured = _userService.hasCidBeenCaptured(vatsimUser.Cid);
                 
                 if (cidHasBeenCaptured) 
@@ -29,10 +30,10 @@ namespace Bahrain.Common
                     _userService.CaptureNewUser(vatsimUser);
                 }
             }
-            catch (AccessTokenRejectedException accessTokenRejectedException) {
+            catch (AccessTokenRejectedException) {
                 // TODO - try get new access token
                 string newAccessToken = _vatsimApi.GetNewAccessToken(refreshToken);
-                HandleSsoToken(newAccessToken, refreshToken);
+                HandleSsoToken(newAccessToken, refreshToken, logger);
                 return;
             }
         }

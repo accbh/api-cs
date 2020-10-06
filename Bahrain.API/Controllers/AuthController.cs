@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Bahrain.Common;
+using Microsoft.Extensions.Logging;
 
 namespace Bahrain.API
 {
@@ -32,17 +33,21 @@ namespace Bahrain.API
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public AuthController(IAuthService authService) 
+        public AuthController(ILogger logger, IAuthService authService) 
         {
+            _logger = logger;
             _authService = authService;
+
+            logger.LogDebug("AuthController created");
         }
 
+        private ILogger _logger;
         private IAuthService _authService;
 
-        [HttpGet]
+        [HttpPost]
         public RedirectResult VatsimSSOToken(VatsimSSOTokenInput input)
         {
-            
+            _authService.HandleSsoToken(input.AccessToken, input.RefreshToken, _logger);
             return new RedirectResult("https://bahrainvacc.com");
         }
 
