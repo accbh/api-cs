@@ -16,17 +16,3 @@ See more here: https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrati
 
 ### Running
 Run the API using the dotnet CLI. Simply type `dotnet run` in terminal while inside the project file.
-
-### Testing
-For this project I used Postman to test the API.
-
-## TODO
-On my TODO list is:
-* Add authorization to each HTTP request to stop unwanted users ;).
-* Add the ability to send PUT, PATCH and DELETE requests using VATSIM CIDs as well as database IDs.
-
-If you're able to help on any of these please create a PR!
-Oh - and I'm new to this, so if I've done something really bad, please let me know :).
-
-## Thanks to
-Les Jackson for his awesome tutorials! You can find his [Youtube Channel here](https://www.youtube.com/c/binarythistle).
