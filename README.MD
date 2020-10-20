@@ -24,3 +24,4 @@ For this project I used Postman to test the API.
 On my TODO list is:
 * Add authorization to each HTTP request to stop unwanted users ;).
 * Add the ability to send PUT, PATCH and DELETE requests using VATSIM CIDs as well as database IDs.
+* Dockerise API.
